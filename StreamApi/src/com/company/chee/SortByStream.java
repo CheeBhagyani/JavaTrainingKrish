@@ -15,7 +15,7 @@ public class SortByStream {
                 .stream().sorted((s1,s2) -> new Integer(s1.getId()).compareTo(s2.getId())).collect(Collectors.toList());
         System.out.println(students);
 
-        //reverse sorting
+        //reverse sorting with stream and lambda
         List<Student> studentList = Student.getStudent().stream().sorted((s1,s2) -> new Integer(-s1.getId()).compareTo(- s2.getId())).collect(Collectors.toList());
         System.out.println(studentList);
     }
