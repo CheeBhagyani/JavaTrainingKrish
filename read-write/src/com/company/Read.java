@@ -10,10 +10,10 @@ public class Read {
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-        String line = "";
+        String text = "";
 
-        while((line=bufferedReader.readLine())!=null) {
-            System.out.println(line);
+        while((text = bufferedReader.readLine())!=null) {
+            System.out.println(text);
         }
 
         fileReader.close();
