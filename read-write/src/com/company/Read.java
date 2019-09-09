@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Read {
     public static void main(String[] args) throws IOException {
-        String filePath = "/home/user/Desktop/read-write/src/com/company/files/readFile";
+        String filePath = "/home/user/Desktop/bhagyani/JavaTrainingVirtusa/read-write/src/com/company/files/textFile";
         File file = new File(filePath);
 
         FileReader fileReader = new FileReader(file);

@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="777efc5d-cf4d-4cc0-974f-42bbf9b2a798" name="Default Changelist" comment="" />
+    <list default="true" id="777efc5d-cf4d-4cc0-974f-42bbf9b2a798" name="Default Changelist" comment="correction">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../StreamApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../StreamApi/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/read-write/META-INF/read-write.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/read-write/com/company/Read.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/read-write/com/company/Read.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/read-write/com/company/ReadTryWithResources.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/read-write/com/company/ReadTryWithResources.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/read-write/com/company/Write.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/read-write/com/company/Write.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/read-write/com/company/WriteTryWithResources.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/read-write/com/company/WriteTryWithResources.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/read-write/com/company/files/readFile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/read-write/com/company/files/writeFile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Read.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Read.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/ReadTryWithResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ReadTryWithResources.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Write.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Write.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/WriteTryWithResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/WriteTryWithResources.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/files/readFile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/files/writeFile" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +32,15 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1QbDoR94FSt6J0qziQEiuCcSWAX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -28,7 +53,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Read">
+  <component name="RunManager" selected="Application.ReadTryWithResources">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.company.Main" />
       <module name="read-write" />
@@ -41,6 +66,19 @@
     </configuration>
     <configuration name="Read" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.company.Read" />
+      <module name="read-write" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReadTryWithResources" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.ReadTryWithResources" />
       <module name="read-write" />
       <extension name="coverage">
         <pattern>
@@ -69,11 +107,13 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Write" />
       <item itemvalue="Application.Read" />
+      <item itemvalue="Application.ReadTryWithResources" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Read" />
+        <item itemvalue="Application.ReadTryWithResources" />
         <item itemvalue="Application.Write" />
+        <item itemvalue="Application.Read" />
       </list>
     </recent_temporary>
   </component>
@@ -89,5 +129,16 @@
       <updated>1568030576497</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

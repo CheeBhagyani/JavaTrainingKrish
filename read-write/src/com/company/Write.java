@@ -6,12 +6,14 @@ import java.io.IOException;
 
 public class Write {
     public static void main(String[] args) throws IOException {
-        String filePath = "/home/user/Desktop/read-write/src/com/company/files/writeFile";
+        String filePath = "/home/user/Desktop/bhagyani/JavaTrainingVirtusa/read-write/src/com/company/files/textFile";
 
         FileWriter writer = new FileWriter(filePath);
         BufferedWriter buffer = new BufferedWriter(writer);
 
-        buffer.write("Write to file");
+        for (int i = 1; i < 11; i++){
+            buffer.write("" + i + "\n");
+        }
 
         buffer.close();
     }

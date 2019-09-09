@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class ReadTryWithResources {
     public static void main(String[] args) {
-        String filePath = "/home/user/Desktop/read-write/src/com/company/files/readFile";
+        String filePath = "/home/user/Desktop/bhagyani/JavaTrainingVirtusa/read-write/src/com/company/files/textFile";
         File readFile = new File(filePath);
 
         try {

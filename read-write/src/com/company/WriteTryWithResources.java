@@ -6,12 +6,14 @@ import java.io.IOException;
 
 public class WriteTryWithResources {
     public static void main(String[] args) {
-        String writeFile = "/home/user/Desktop/read-write/src/com/company/files/writeFile";
+        String writeFile = "/home/user/Desktop/bhagyani/JavaTrainingVirtusa/read-write/src/com/company/files/textFile";
 
         try {
             FileWriter writer = new FileWriter(writeFile);
             BufferedWriter buffer = new BufferedWriter(writer);
-            buffer.write("Writing to file");
+            for (int i = 1; i < 11; i++){
+                buffer.write("" + i + "\n");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
