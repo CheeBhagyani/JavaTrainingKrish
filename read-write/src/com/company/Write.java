@@ -1,8 +1,6 @@
 package com.company;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class Write {
     public static void main(String[] args) throws IOException {

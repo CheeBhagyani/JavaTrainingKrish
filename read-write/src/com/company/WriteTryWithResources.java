@@ -8,9 +8,7 @@ public class WriteTryWithResources {
     public static void main(String[] args) {
         String writeFile = "/home/user/Desktop/bhagyani/JavaTrainingVirtusa/read-write/src/com/company/files/textFile";
 
-        try {
-            FileWriter writer = new FileWriter(writeFile);
-            BufferedWriter buffer = new BufferedWriter(writer);
+        try(BufferedWriter buffer = new BufferedWriter(new FileWriter(writeFile))) {
             for (int i = 1; i < 11; i++){
                 buffer.write("" + i + "\n");
             }
