@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="777efc5d-cf4d-4cc0-974f-42bbf9b2a798" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../aothdemo/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Generics/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Generics/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/read-write/com/company/Read.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/read-write/com/company/Read.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/read-write/com/company/ReadTryWithResources.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/read-write/com/company/ReadTryWithResources.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/read-write/com/company/Write.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/read-write/com/company/Write.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/read-write/com/company/WriteTryWithResources.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/read-write/com/company/WriteTryWithResources.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/ReadTryWithResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ReadTryWithResources.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Write.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Write.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/WriteTryWithResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/WriteTryWithResources.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,7 +26,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../aothdemo" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -149,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568036772012</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="try with resources">
+      <created>1568091646930</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1568091646930</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -157,7 +159,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -165,6 +169,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="correction" />
-    <option name="LAST_COMMIT_MESSAGE" value="correction" />
+    <MESSAGE value="try with resources" />
+    <option name="LAST_COMMIT_MESSAGE" value="try with resources" />
   </component>
 </project>

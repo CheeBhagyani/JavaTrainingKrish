@@ -14,6 +14,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 
 @Configuration
 public class AuthServerConfiguration extends WebSecurityConfigurerAdapter implements AuthorizationServerConfigurer {
+
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
@@ -31,8 +32,10 @@ public class AuthServerConfiguration extends WebSecurityConfigurerAdapter implem
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory().withClient("web").secret(passwordEncoder.encode("webpass"))
-                .scopes("READ", "WRITE").authorizedGrantTypes("password", "authorization_code");
+//        clients.inMemory().withClient("web").secret(passwordEncoder.encode("webpass"))
+//                .scopes("READ", "WRITE").authorizedGrantTypes("password", "authorization_code");
+        clients.inMemory().withClient("web").secret(passwordEncoder.encode("webpass")).scopes("READ", "WRITE").authorizedGrantTypes("password", "authorization_code");
+
     }
 
     @Override
