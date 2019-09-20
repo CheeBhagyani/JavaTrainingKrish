@@ -29,4 +29,19 @@ public class UIController extends WebSecurityConfigurerAdapter {
     public String loadIndex() {
         return "index";
     }
+
+    @RequestMapping(value = "/create")
+    public String loadCreate() {
+        return "create";
+    }
+
+    @RequestMapping(value = "/search")
+    public String loadSearch() {
+        return "search";
+    }
+
+    @RequestMapping(value = "/student_details")
+    public String loadDetails() {
+        return "student_details";
+    }
 }

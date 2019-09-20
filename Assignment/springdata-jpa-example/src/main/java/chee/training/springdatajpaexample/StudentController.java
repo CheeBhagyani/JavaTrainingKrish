@@ -4,12 +4,11 @@ import chee.training.springdatajpaexample.modal.Address;
 import chee.training.springdatajpaexample.modal.Student;
 import chee.training.springdatajpaexample.modal.Telephone;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import chee.training.springdatajpaexample.service.StudentServiceImpl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping(value = "/sms")
@@ -57,4 +56,20 @@ public class StudentController {
         return studentService.findById(id);
     }
 
+    @PutMapping("/student/{id}")
+    Student replaceEmployee(@RequestBody Student newStudent, @PathVariable Integer id) {
+        return studentService.findById(id)
+                .map(student -> {
+                    student.setName(newStudent.getName());
+                    student.setAddress(newStudent.getAddress());
+                    student.setTelephoneList(newStudent.getTelephoneList());
+                    return studentService.save(student);
+                })
+                .orElseGet(() -> {
+                    newStudent.setSid(id);
+                    return studentService.save(newStudent);
+                });
+    }
+
+//sss
 }

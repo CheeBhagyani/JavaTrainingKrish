@@ -24,4 +24,6 @@ public class StudentServiceImpl {
     public Optional<Student> findById(Integer id) {
         return studentRepository.findById(id);
     }
+
+    public Student update(Integer id, Student student) { return studentRepository.save(student); }
 }
