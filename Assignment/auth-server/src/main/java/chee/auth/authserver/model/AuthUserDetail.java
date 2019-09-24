@@ -9,10 +9,17 @@ import java.util.Collection;
 import java.util.List;
 
 public class AuthUserDetail extends User implements UserDetails {
+    public AuthUserDetail(User user) {
+        super(user);
+    }
+
+    public AuthUserDetail() {
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        super.getRoles().forEach(role -> {
+        getRoles().forEach(role -> {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
             role.getPermissions().forEach(permission -> {
                 grantedAuthorities.add(new SimpleGrantedAuthority(permission.getName()));
