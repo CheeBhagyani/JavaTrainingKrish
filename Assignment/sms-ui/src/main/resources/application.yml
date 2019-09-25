@@ -3,10 +3,10 @@ security:
     client:
       client-id: web
       client-secret: webpass
-      user-authorization-uri: http://localhost:8282/oauth/authorize
-      access-token-uri: http://localhost:8282/oauth/token
+      user-authorization-uri: http://localhost:9090/oauth/authorize
+      access-token-uri: http://localhost:9090/oauth/token
     resource:
-      token-info-uri: http://localhost:8282/oauth/check_token
+      token-info-uri: http://localhost:9090/oauth/check_token
 server:
   port: 8281
   servlet:

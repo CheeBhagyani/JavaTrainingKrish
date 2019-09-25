@@ -46,17 +46,17 @@ public class StudentController {
 //        return firstStudent;
 //    }
 
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    @RequestMapping(value = "/students", method = RequestMethod.GET)
     public List<Student> getAll(Optional<Integer> id) {
         return studentService.findAll();
     }
 
-    @RequestMapping(value = "/getById/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/students/{id}", method = RequestMethod.GET)
     public Optional<Student> getById(@PathVariable Integer id) {
         return studentService.findById(id);
     }
 
-    @PutMapping("/student/{id}")
+    @PutMapping("/students/{id}")
     Student replaceEmployee(@RequestBody Student newStudent, @PathVariable Integer id) {
         return studentService.findById(id)
                 .map(student -> {
