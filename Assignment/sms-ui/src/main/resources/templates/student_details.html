@@ -40,6 +40,9 @@
         </ul>
     </div>
 </nav>
+<!--<form name="info" th:action="@{/student_info}" th:formmethod="post">-->
+<!--    <button type="submit">Get</button>-->
+<!--</form>-->
 <div class="container mt-4 col-lg-8">
     <table class="table table-striped">
         <thead>
@@ -51,23 +54,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
+        <tr th:each="student:${students}">
+            <th scope="row"><span th:text="${student.sid}"></span></th>
+            <td><span th:text="${student.name}"></span></td>
+            <td><span th:text="${student.address.name}"></span></td>
+            <td><span>011288888</span></td>
         </tr>
         </tbody>
     </table>

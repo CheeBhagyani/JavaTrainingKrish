@@ -1,6 +1,7 @@
 package chee.training.springdatajpaexample.service;
 
-import chee.training.springdatajpaexample.modal.Student;
+import chee.rentcloud.commons.model.Student;
+import chee.rentcloud.commons.model.Telephone;
 import org.springframework.beans.factory.annotation.Autowired;
 import chee.training.springdatajpaexample.repository.StudentRepository;
 import org.springframework.stereotype.Service;
