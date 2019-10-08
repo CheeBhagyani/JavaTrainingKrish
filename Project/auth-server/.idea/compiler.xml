@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="springdata-jpa-project" />
+        <module name="sms-ui" />
+        <module name="auth-server" />
+        <module name="rentcloud-ems" />
+        <module name="springdata-jpa-employee" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="auth-server" target="1.8" />
+      <module name="rentcloud-ems" target="1.5" />
+      <module name="sms-ui" target="1.8" />
+      <module name="springdata-jpa-employee" target="1.8" />
+      <module name="springdata-jpa-project" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="auth-server" options="-parameters" />
+      <module name="sms-ui" options="-parameters" />
+      <module name="springdata-jpa-employee" options="-parameters" />
+      <module name="springdata-jpa-project" options="-parameters" />
+    </option>
+  </component>
+</project>

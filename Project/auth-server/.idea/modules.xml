@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/auth-server.iml" filepath="$PROJECT_DIR$/auth-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../rentcloud-ems/rentcloud-ems.iml" filepath="$PROJECT_DIR$/../rentcloud-ems/rentcloud-ems.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../sms-ui/sms-ui.iml" filepath="$PROJECT_DIR$/../sms-ui/sms-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../springdata-jpa-employee/springdata-jpa-employee.iml" filepath="$PROJECT_DIR$/../springdata-jpa-employee/springdata-jpa-employee.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../springdata-jpa-project/springdata-jpa-project.iml" filepath="$PROJECT_DIR$/../springdata-jpa-project/springdata-jpa-project.iml" />
+    </modules>
+  </component>
+</project>
