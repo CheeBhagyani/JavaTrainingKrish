@@ -44,7 +44,6 @@ public class EmployeeController {
                 .map(employee -> {
                     employee.setEname(newEmployee.getEname());
                     employee.setAddress(newEmployee.getAddress());
-//                    employee.setProjectList(newEmployee.getProjectList());
                     employee.setTelephoneList(newEmployee.getTelephoneList());
 
                     return employeeService.save(employee);
