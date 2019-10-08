@@ -4,7 +4,12 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../../Project/springdata-jpa-ems/pom.xml" />
+        <option value="$PROJECT_DIR$/../../Project/auth-server/pom.xml" />
+        <option value="$PROJECT_DIR$/../../Project/rentcloudems/pom.xml" />
+        <option value="$PROJECT_DIR$/../../Project/springdata-jpa-project/pom.xml" />
+        <option value="$PROJECT_DIR$/../../Project/springdata-jpa-employee/pom.xml" />
+        <option value="$PROJECT_DIR$/../../Project/sms-ui/pom.xml" />
       </list>
     </option>
   </component>

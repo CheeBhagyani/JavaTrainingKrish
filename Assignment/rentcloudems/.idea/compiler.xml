@@ -6,8 +6,23 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="rentcloudems" />
+        <module name="springdata-jpa-project" />
+        <module name="sms-ui" />
+        <module name="auth-server" />
+        <module name="rentcloud-ems" />
+        <module name="springdata-jpa-employee" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="rentcloudems" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="auth-server" options="-parameters" />
+      <module name="sms-ui" options="-parameters" />
+      <module name="springdata-jpa-employee" options="-parameters" />
+      <module name="springdata-jpa-project" options="-parameters" />
+    </option>
   </component>
 </project>
