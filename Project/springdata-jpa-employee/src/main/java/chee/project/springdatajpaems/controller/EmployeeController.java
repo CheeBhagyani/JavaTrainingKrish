@@ -31,11 +31,6 @@ public class EmployeeController {
         return employeeService.findAll();
     }
 
-    @RequestMapping(value = "/employee/{id}", method = RequestMethod.GET)
-    public Optional<Employee> getById(@PathVariable Integer id) {
-        return employeeService.findById(id);
-    }
-
 //    @PutMapping("/employee/{id}")
 //    Employee replaceEmployee(@RequestBody Employee newEmployee, @PathVariable Integer id) {
 //        return employeeService.findById(id)
