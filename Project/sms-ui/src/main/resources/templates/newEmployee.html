@@ -43,36 +43,25 @@
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
             <span class="navbar-text">
-                <b>/Employee</b>
+                <b>/Employee/Add Employee</b>
             </span>
         </ul>
     </div>
 </nav>
-<!--<form name="info" th:action="@{/student_info}" th:formmethod="post">-->
-<!--    <button type="submit">Get</button>-->
-<!--</form>-->
 <div class="container mt-4 col-lg-8">
-    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">+ New Employee</button>
-    <table class="table table-striped mt-2">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Address</th>
-            <th scope="col">Telephone</th>
-            <th scope="col">Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="employee:${employees}">
-            <th scope="row"><span th:text="${employee.eid}"></span></th>
-            <td><span th:text="${employee.ename}"></span></td>
-            <td><span th:text="${employee.address.addressName}"></span></td>
-            <td><span>011288888</span></td>
-            <td><button class="btn btn-outline-success my-2 my-sm-0" type="submit">More</button></td>
-        </tr>
-        </tbody>
-    </table>
+    <form>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"> Name:</label>
+            <input class="form-control" type="text" placeholder="Enter employee name">
+            <label class="col-sm-2 col-form-label"> Address:</label>
+            <input class="form-control" type="text" placeholder="Enter employee address">
+            <label class="col-sm-2 col-form-label"> Telephone:</label>
+            <input class="form-control" type="text" placeholder="Enter employee telephone">
+            
+        </div>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Create</button>
+        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Cancel</button>
+    </form>
 </div>
 </body>
 </html>
