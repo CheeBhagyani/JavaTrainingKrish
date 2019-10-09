@@ -69,7 +69,8 @@
             <td><span th:text="${employee.ename}"></span></td>
             <td><span th:text="${employee.email}"></span></td>
             <td><span th:text="${employee.contact}"></span></td>
-            <td><button class="btn btn-outline-success my-2 my-sm-0" type="submit">More</button></td>
+            <td><button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a th:href="@{/employeeInfo}">More</a></button></td>
+<!--            <a class="btn btn-primary" th:href="@{'/employees/' + ${employee.id}}" role="button" th:action="@{/employees/{employee.id}}">View</a>-->
         </tr>
         </tbody>
     </table>

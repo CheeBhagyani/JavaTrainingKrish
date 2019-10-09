@@ -23,4 +23,9 @@ public class ProjectController {
     public Project save(@RequestBody Project project) {
         return projectService.save(project);
     }
+
+    @RequestMapping(value = "/project/{id}", method = RequestMethod.GET)
+    public Optional<Project> getById(@PathVariable Integer id) {
+        return projectService.findById(id);
+    }
 }

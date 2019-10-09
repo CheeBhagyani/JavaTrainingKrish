@@ -1,8 +1,6 @@
 package chee.spring.smsui.controller;
 
-import chee.rentcloud.ems.model.Employee;
-import chee.rentcloud.ems.model.Project;
-import chee.rentcloud.ems.model.Task;
+import chee.rentcloud.ems.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
@@ -16,10 +14,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @EnableOAuth2Sso
@@ -48,12 +50,6 @@ public class UIController extends WebSecurityConfigurerAdapter {
         return "home";
     }
 
-    @PreAuthorize("hasRole('ROLE_admin')")
-    @RequestMapping(value = "/operations")
-    public String loadOperations() {
-        return "operations";
-    }
-
     @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
     @RequestMapping(value = "/newEmployee")
     public String loadEmp() {
@@ -70,6 +66,12 @@ public class UIController extends WebSecurityConfigurerAdapter {
     @RequestMapping(value = "/newTask")
     public String loadNewTask() {
         return "newTask";
+    }
+
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @RequestMapping(value = "/employeeInfo")
+    public String loadEmpInfo() {
+        return "employeeInfo";
     }
 
     @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
@@ -97,6 +99,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
         HttpEntity<Employee> employeeHttpEntity = new HttpEntity<Employee>(employee,httpHeaders);
+
 
         try {
             ResponseEntity<Employee> responseEntity = restTemplate.exchange("http://localhost:8080/ems/employee", HttpMethod.POST,employeeHttpEntity,Employee.class);
@@ -173,5 +176,71 @@ public class UIController extends WebSecurityConfigurerAdapter {
             model.addAttribute("error",responseEntity);
         }
         return "redirect:task";
+    }
+
+    @RequestMapping(value = "/operations")
+    public String saveOperations(Model model){
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
+        HttpEntity<Employee> employeeHttpEntity = new HttpEntity<Employee>(httpHeaders);
+        HttpEntity<Task> taskHttpEntity = new HttpEntity<>(httpHeaders);
+        HttpEntity<Project> projectHttpEntity = new HttpEntity<>(httpHeaders);
+        try {
+            ResponseEntity<Employee[]> responseEntityEmp = restTemplate.exchange("http://localhost:8080/ems/employees", HttpMethod.GET, employeeHttpEntity, Employee[].class);
+            model.addAttribute("employees", responseEntityEmp.getBody());
+            ResponseEntity<Task[]> responseEntityTask = restTemplate.exchange("http://localhost:8082/ems/tasks", HttpMethod.GET, taskHttpEntity, Task[].class);
+            model.addAttribute("tasks", responseEntityTask.getBody());
+            ResponseEntity<Project[]> responseEntityProject = restTemplate.exchange("http://localhost:8081/ems/projects", HttpMethod.GET, projectHttpEntity, Project[].class);
+            model.addAttribute("projects", responseEntityProject.getBody());
+        }catch (HttpStatusCodeException se){
+            ResponseEntity responseEntity = ResponseEntity.status(se.getRawStatusCode()).headers(se.getResponseHeaders()).body(se.getResponseBodyAsString());
+            model.addAttribute("error",responseEntity);
+        }
+        return "operations";
+    }
+
+    @RequestMapping(value = "/assign",method = RequestMethod.POST)
+    public String assignProject(@ModelAttribute AssignProjectTaskList assignTaskList, Model model){
+        System.out.println("inside");
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
+        List<AssignProjectTask> assignTask = new ArrayList<>();
+        assignTaskList.getTid().forEach((t)->{
+            AssignProjectTask task = new AssignProjectTask();
+            task.setEid(assignTaskList.getEid());
+            task.setPid(assignTaskList.getPid());
+            task.setTid(t);
+            assignTask.add(task);
+            System.out.println(task);
+        });
+
+        HttpEntity<List> assignTaskHttpEntity = new HttpEntity<List>(assignTask,httpHeaders);
+        try {
+            ResponseEntity<List> responseEntity = restTemplate.exchange("http://localhost:8080/ems/assign", HttpMethod.POST,assignTaskHttpEntity,List.class);
+        }catch (HttpStatusCodeException se){
+            ResponseEntity responseEntity = ResponseEntity.status(se.getRawStatusCode()).headers(se.getResponseHeaders()).body(se.getResponseBodyAsString());
+            model.addAttribute("error",responseEntity);
+        }
+
+        return "redirect:operations";
+    }
+
+    @RequestMapping(value = "/employees/{id}")
+    public String getEmployee(@PathVariable Integer id , Model model){
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
+        HttpEntity<Employee> employeeHttpEntity = new HttpEntity<Employee>(httpHeaders);
+
+        try {
+            ResponseEntity<Employee> responseEntity1 = restTemplate.exchange("http://localhost:8080/ems/employee/{id}", HttpMethod.GET,employeeHttpEntity,Employee.class,id);
+            model.addAttribute("employee",responseEntity1.getBody());
+            ResponseEntity<Project[]> responseEntity2 = restTemplate.exchange("http://localhost:8080/ems/employee/{id}/projects", HttpMethod.GET,employeeHttpEntity,Project[].class,id);
+            model.addAttribute("projects",responseEntity2.getBody());
+        }catch (HttpStatusCodeException se){
+            ResponseEntity responseEntity = ResponseEntity.status(se.getRawStatusCode()).headers(se.getResponseHeaders()).body(se.getResponseBodyAsString());
+            model.addAttribute("error",responseEntity);
+        }
+
+        return "employeeInfo";
     }
 }
