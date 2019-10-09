@@ -28,48 +28,36 @@
             <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/employee">Employee</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/project">Project</a>
+            </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/student_details">Employee <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/create">Project</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/search">Task</a>
+                <a class="nav-link" href="/task">Task <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/operations">Operations</a>
             </li>
         </ul>
-        <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-            <span class="navbar-text">
-                <b>/Employee</b>
-            </span>
-        </ul>
     </div>
 </nav>
-<!--<form name="info" th:action="@{/student_info}" th:formmethod="post">-->
-<!--    <button type="submit">Get</button>-->
-<!--</form>-->
 <div class="container mt-4 col-lg-8">
-    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">+ New Employee</button>
+    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><a th:href="@{/newTask}">+ New Task</a></button>
     <table class="table table-striped mt-2">
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Address</th>
-            <th scope="col">Telephone</th>
-            <th scope="col">Action</th>
+            <th scope="col">Task Name</th>
+            <th scope="col">Task Description</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="employee:${employees}">
-            <th scope="row"><span th:text="${employee.eid}"></span></th>
-            <td><span th:text="${employee.ename}"></span></td>
-            <td><span th:text="${employee.address.addressName}"></span></td>
-            <td><span>011288888</span></td>
-            <td><button class="btn btn-outline-success my-2 my-sm-0" type="submit">More</button></td>
+        <tr th:each="task:${tasks}">
+            <th scope="row"><span th:text="${task.taskId}"></span></th>
+            <th scope="row"><span th:text="${task.taskName}"></span></th>
+            <td><span th:text="${task.taskDes}"></span></td>
         </tr>
         </tbody>
     </table>

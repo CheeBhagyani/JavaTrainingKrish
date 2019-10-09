@@ -29,13 +29,13 @@
                 <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/student_details">Employee</a>
+                <a class="nav-link" href="/employee">Employee</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/create">Project</a>
+                <a class="nav-link" href="/project">Project</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/search">Task <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/task">Task <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/operations">Operations</a>
@@ -44,15 +44,15 @@
     </div>
 </nav>
 <div class="container mt-4 col-lg-8">
-        <form>
+    <form name="task-form" th:action="@{/task}" method="post">
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label"> Name:</label>
-                <input class="form-control" type="text" placeholder="Enter task name">
+                <input class="form-control" type="text" id="taskName" placeholder="Enter task name">
                 <label class="col-sm-2 col-form-label"> Description:</label>
-                <input class="form-control" type="text" placeholder="Enter employee address">
+                <input class="form-control" type="text" id="taskDes" placeholder="Enter employee address">
             </div>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Create</button>
-            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Cancel</button>
+            <button class="btn btn-outline-secondary my-2 my-sm-0">Cancel</button>
         </form>
 </div>
 </body>

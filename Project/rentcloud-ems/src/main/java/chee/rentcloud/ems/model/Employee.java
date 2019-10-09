@@ -9,12 +9,24 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer eid;
     private String ename;
+    private String email;
+    private String contact;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Address address;
+    public String getEmail() {
+        return email;
+    }
 
-    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    List<Telephone> telephoneList;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
 
     public Integer getEid() {
         return eid;
@@ -32,19 +44,4 @@ public class Employee {
         this.ename = ename;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public List<Telephone> getTelephoneList() {
-        return telephoneList;
-    }
-
-    public void setTelephoneList(List<Telephone> telephoneList) {
-        this.telephoneList = telephoneList;
-    }
 }

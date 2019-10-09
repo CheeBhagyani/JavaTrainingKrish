@@ -1,6 +1,8 @@
 package chee.spring.smsui.controller;
 
 import chee.rentcloud.ems.model.Employee;
+import chee.rentcloud.ems.model.Project;
+import chee.rentcloud.ems.model.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
@@ -9,12 +11,13 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
@@ -45,24 +48,6 @@ public class UIController extends WebSecurityConfigurerAdapter {
         return "home";
     }
 
-    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
-    @RequestMapping(value = "/index")
-    public String loadIndex() {
-        return "index";
-    }
-
-    @PreAuthorize("hasRole('                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ')")
-    @RequestMapping(value = "/create")
-    public String loadCreate() {
-        return "create";
-    }
-
-    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
-    @RequestMapping(value = "/search")
-    public String loadSearch() {
-        return "search";
-    }
-
     @PreAuthorize("hasRole('ROLE_admin')")
     @RequestMapping(value = "/operations")
     public String loadOperations() {
@@ -70,7 +55,25 @@ public class UIController extends WebSecurityConfigurerAdapter {
     }
 
     @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
-    @RequestMapping(value = "/student_details")
+    @RequestMapping(value = "/newEmployee")
+    public String loadEmp() {
+        return "newEmployee";
+    }
+
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @RequestMapping(value = "/newProject")
+    public String loadNewProject() {
+        return "newProject";
+    }
+
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @RequestMapping(value = "/newTask")
+    public String loadNewTask() {
+        return "newTask";
+    }
+
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @RequestMapping(value = "/employee")
     public String loadDetails(Model model) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
@@ -85,6 +88,90 @@ public class UIController extends WebSecurityConfigurerAdapter {
             model.addAttribute("error", responseEntity);
         }
 
-        return "student_details";
+        return "employee";
+    }
+
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @RequestMapping(value = "/employee", method = RequestMethod.POST)
+    public String saveEmployee(@ModelAttribute Employee employee, Model model){
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
+        HttpEntity<Employee> employeeHttpEntity = new HttpEntity<Employee>(employee,httpHeaders);
+
+        try {
+            ResponseEntity<Employee> responseEntity = restTemplate.exchange("http://localhost:8080/ems/employee", HttpMethod.POST,employeeHttpEntity,Employee.class);
+        } catch (HttpStatusCodeException se){
+            ResponseEntity responseEntity = ResponseEntity.status(se.getRawStatusCode()).headers(se.getResponseHeaders()).body(se.getResponseBodyAsString());
+            model.addAttribute("error",responseEntity);
+        }
+        return "redirect:employee";
+    }
+
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @RequestMapping(value = "/project", method = RequestMethod.POST)
+    public String saveProject(@ModelAttribute Project project, Model model){
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
+        HttpEntity<Project> projectHttpEntity = new HttpEntity<Project>(project, httpHeaders);
+
+        try {
+            ResponseEntity<Project> responseEntity = restTemplate.exchange("http://localhost:8081/ems/project", HttpMethod.POST,projectHttpEntity,Project.class);
+        } catch (HttpStatusCodeException se){
+            ResponseEntity responseEntity = ResponseEntity.status(se.getRawStatusCode()).headers(se.getResponseHeaders()).body(se.getResponseBodyAsString());
+            model.addAttribute("error",responseEntity);
+        }
+        return "redirect:project";
+    }
+
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @RequestMapping(value = "/project")
+    public String loadProjects(Model model) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
+
+        HttpEntity<Project> projectHttpEntity = new HttpEntity<>(httpHeaders);
+
+        try {
+            ResponseEntity<Project[]> responseEntity = restTemplate.exchange("http://localhost:8081/ems/projects", HttpMethod.GET, projectHttpEntity, Project[].class);
+            model.addAttribute("projects", responseEntity.getBody());
+        } catch (HttpStatusCodeException e) {
+            ResponseEntity responseEntity = ResponseEntity.status(e.getRawStatusCode()).headers(e.getResponseHeaders()).body(e.getResponseBodyAsString());
+            model.addAttribute("error", responseEntity);
+        }
+        return "project";
+    }
+
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @RequestMapping(value = "/task")
+    public String loadTasks(Model model) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
+
+        HttpEntity<Task> taskHttpEntity = new HttpEntity<>(httpHeaders);
+
+        try {
+            ResponseEntity<Task[]> responseEntity = restTemplate.exchange("http://localhost:8082/ems/tasks", HttpMethod.GET, taskHttpEntity, Task[].class);
+            model.addAttribute("tasks", responseEntity.getBody());
+        } catch (HttpStatusCodeException e) {
+            ResponseEntity responseEntity = ResponseEntity.status(e.getRawStatusCode()).headers(e.getResponseHeaders()).body(e.getResponseBodyAsString());
+            model.addAttribute("error", responseEntity);
+        }
+
+        return "task";
+    }
+
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @RequestMapping(value = "/task", method = RequestMethod.POST)
+    public String saveTask(@ModelAttribute Task task, Model model){
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
+        HttpEntity<Task> taskHttpEntity = new HttpEntity<Task>(task, httpHeaders);
+        try {
+            ResponseEntity<Task> responseEntity = restTemplate.exchange("http://localhost:8082/ems/task", HttpMethod.POST,taskHttpEntity,Task.class);
+        } catch (HttpStatusCodeException se){
+            ResponseEntity responseEntity = ResponseEntity.status(se.getRawStatusCode()).headers(se.getResponseHeaders()).body(se.getResponseBodyAsString());
+            model.addAttribute("error",responseEntity);
+        }
+        return "redirect:task";
     }
 }

@@ -2,7 +2,6 @@ package chee.project.springdatajpaems;
 
 import chee.project.springdatajpaems.service.EmployeeServiceImpl;
 import chee.rentcloud.ems.model.Employee;
-import chee.rentcloud.ems.model.Telephone;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,16 +14,8 @@ public class EmployeeController {
     @Autowired
     EmployeeServiceImpl employeeService;
 
-    @RequestMapping(value = "/hello")
-    public String greeting(){
-        return "hello springboot";
-    }
-
     @RequestMapping(value = "/employee", method = RequestMethod.POST)
     public Employee save(@RequestBody Employee employee) {
-        for (Telephone telephone: employee.getTelephoneList()) {
-            telephone.setEmployee(employee);
-        }
         return employeeService.save(employee);
     }
 
@@ -33,7 +24,7 @@ public class EmployeeController {
         return employeeService.findAll();
     }
 
-    @RequestMapping(value = "/students/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/employee/{id}", method = RequestMethod.GET)
     public Optional<Employee> getById(@PathVariable Integer id) {
         return employeeService.findById(id);
     }
@@ -43,8 +34,8 @@ public class EmployeeController {
         return employeeService.findById(id)
                 .map(employee -> {
                     employee.setEname(newEmployee.getEname());
-                    employee.setAddress(newEmployee.getAddress());
-                    employee.setTelephoneList(newEmployee.getTelephoneList());
+                    employee.setEmail(newEmployee.getEmail());
+                    employee.setContact(newEmployee.getContact());
 
                     return employeeService.save(employee);
                 })
