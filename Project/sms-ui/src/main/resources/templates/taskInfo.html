@@ -38,7 +38,7 @@
                 <a class="nav-link" href="/task">Task</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/operations" sec:authorize="hasRole('ROLE_manager')">Operations</a>
+                <a class="nav-link" href="/operations" sec:authorize="hasRole('ROLE_admin')">Operations</a>
             </li>
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
@@ -53,7 +53,7 @@
         <thead>
         <tr>
             <th scope="col">Task Id</th>
-            <th scope="col">ask Name</th>
+            <th scope="col">Task Name</th>
             <th scope="col">Description</th>
         </tr>
         </thead>

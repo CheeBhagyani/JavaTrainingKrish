@@ -50,19 +50,19 @@ public class UIController extends WebSecurityConfigurerAdapter {
         return "home";
     }
 
-    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @PreAuthorize("hasRole('ROLE_admin')")
     @RequestMapping(value = "/newEmployee")
     public String loadEmp() {
         return "newEmployee";
     }
 
-    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @PreAuthorize("hasRole('ROLE_admin')")
     @RequestMapping(value = "/newProject")
     public String loadNewProject() {
         return "newProject";
     }
 
-    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @PreAuthorize("hasRole('ROLE_admin')")
     @RequestMapping(value = "/newTask")
     public String loadNewTask() {
         return "newTask";
@@ -87,7 +87,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         return "employee";
     }
 
-    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @PreAuthorize("hasRole('ROLE_admin')")
     @RequestMapping(value = "/employee", method = RequestMethod.POST)
     public String saveEmployee(@ModelAttribute Employee employee, Model model){
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -104,7 +104,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         return "redirect:employee";
     }
 
-    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @PreAuthorize("hasRole('ROLE_admin')")
     @RequestMapping(value = "/project", method = RequestMethod.POST)
     public String saveProject(@ModelAttribute Project project, Model model){
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -157,7 +157,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         return "task";
     }
 
-    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @PreAuthorize("hasRole('ROLE_admin')")
     @RequestMapping(value = "/task", method = RequestMethod.POST)
     public String saveTask(@ModelAttribute Task task, Model model){
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -172,7 +172,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         return "redirect:task";
     }
 
-    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @PreAuthorize("hasRole('ROLE_admin')")
     @RequestMapping(value = "/operations")
     public String saveOperations(Model model){
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -194,7 +194,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         return "operations";
     }
 
-    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @PreAuthorize("hasRole('ROLE_admin')")
     @RequestMapping(value = "/assign",method = RequestMethod.POST)
     public String assignProject(@ModelAttribute AssignProjectTaskList assignTaskList, Model model){
         System.out.println("inside");

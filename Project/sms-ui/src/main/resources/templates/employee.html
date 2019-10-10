@@ -38,7 +38,7 @@
                 <a class="nav-link" href="/task">Task</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/operations" sec:authorize="hasRole('ROLE_manager')">Operations</a>
+                <a class="nav-link" href="/operations" sec:authorize="hasRole('ROLE_admin')">Operations</a>
             </li>
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
@@ -52,7 +52,7 @@
 <!--    <button type="submit">Get</button>-->
 <!--</form>-->
 <div class="container mt-4 col-lg-8">
-    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><a th:href="@{/newEmployee}">+ New Employee</a></button>
+    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" sec:authorize="hasRole('ROLE_admin')"><a th:href="@{/newEmployee}">+ New Employee</a></button>
     <table class="table table-striped mt-2">
         <thead>
         <tr>

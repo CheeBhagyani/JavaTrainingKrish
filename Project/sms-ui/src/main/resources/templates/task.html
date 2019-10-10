@@ -38,13 +38,13 @@
                 <a class="nav-link" href="/task">Task <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/operations" sec:authorize="hasRole('ROLE_manager')">Operations</a>
+                <a class="nav-link" href="/operations" sec:authorize="hasRole('ROLE_admin')">Operations</a>
             </li>
         </ul>
     </div>
 </nav>
 <div class="container mt-4 col-lg-8">
-    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><a th:href="@{/newTask}">+ New Task</a></button>
+    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" sec:authorize="hasRole('ROLE_admin')"><a th:href="@{/newTask}">+ New Task</a></button>
     <table class="table table-striped mt-2">
         <thead>
         <tr>
