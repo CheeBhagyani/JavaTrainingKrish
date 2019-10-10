@@ -38,7 +38,7 @@
                 <a class="nav-link" href="/task">Task</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/operations">Operations</a>
+                <a class="nav-link" href="/operations" sec:authorize="hasRole('ROLE_manager')">Operations</a>
             </li>
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
@@ -50,17 +50,21 @@
 </nav>
 <div class="container mt-4 col-lg-8">
     <div class="form-group row">
-        <label class="col-6 col-form-label pb-2">Employee :</label>
-        <label class="col-6 col-form-label pb-2">Employee :</label>
+        <label class="col-4 col-form-label pb-4 text-right">Employee Id:</label>
+        <input type="text"  class="form-control col-6" id="empid" name="empid" th:value="${employee.eid}" readonly>
 
-        <label class="col-6 col-form-label pb-2">Project :</label>
-        <label class="col-6 col-form-label pb-2">Project :</label>
+        <label class="col-4 col-form-label pb-2 text-right pb-4">Employee Name:</label>
+        <input type="text"  class="form-control col-6" id="empName" name="empName" th:value="${employee.ename}" readonly>
 
-        <label class="col-6 col-form-label pb-2">Tasks :</label>
-        <label class="col-6 col-form-label pb-2">Tasks :</label>
+        <label class="col-4 col-form-label pb-2 text-right pb-4">Employee Email:</label>
+        <input type="text"  class="form-control col-6" id="email" name="email" th:value="${employee.email}" readonly>
+
+        <label class="col-4 col-form-label pb-2 text-right pb-4">Employee Contact:</label>
+        <input type="text"  class="form-control col-6" id="empcontact" name="empcontact" th:value="${employee.contact}" readonly>
 
     </div>
 </div>
+
 <div class="container mt-4 col-lg-8">
     <table class="table table-striped mt-2">
         <thead>
@@ -69,14 +73,16 @@
             <th scope="col">Name</th>
             <th scope="col">Project Id</th>
             <th scope="col">Project Name</th>
+            <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="employee:${employees}">
-            <th scope="row"><span th:text="${employee.eid}"></span></th>
-            <td><span th:text="${employee.ename}"></span></td>
-            <td><span th:text="${employee.email}"></span></td>
-            <td><span th:text="${employee.contact}"></span></td>
+        <tr th:each="project:${projects}">
+            <th scope="row"><span th:text="${project.id}"></span></th>
+            <td><span th:text="${project.projectName}"></span></td>
+            <td><span th:text="${project.ProjectDes}"></span></td>
+            <td><span th:text="${project.projectClient}"></span></td>
+            <td><button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a th:href="@{'/employees/' + ${employee.eid}+'/projects/'+${project.id}+'/tasks'}" >More</a></button></td>
         </tr>
         </tbody>
     </table>

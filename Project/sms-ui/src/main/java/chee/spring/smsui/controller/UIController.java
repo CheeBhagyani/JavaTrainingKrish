@@ -69,12 +69,6 @@ public class UIController extends WebSecurityConfigurerAdapter {
     }
 
     @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
-    @RequestMapping(value = "/employeeInfo")
-    public String loadEmpInfo() {
-        return "employeeInfo";
-    }
-
-    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
     @RequestMapping(value = "/employee")
     public String loadDetails(Model model) {
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -178,6 +172,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         return "redirect:task";
     }
 
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
     @RequestMapping(value = "/operations")
     public String saveOperations(Model model){
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -199,6 +194,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         return "operations";
     }
 
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
     @RequestMapping(value = "/assign",method = RequestMethod.POST)
     public String assignProject(@ModelAttribute AssignProjectTaskList assignTaskList, Model model){
         System.out.println("inside");
@@ -225,6 +221,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         return "redirect:operations";
     }
 
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
     @RequestMapping(value = "/employees/{id}")
     public String getEmployee(@PathVariable Integer id , Model model){
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -244,6 +241,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         return "employeeInfo";
     }
 
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
     @RequestMapping(value = "/employees/{id}/projects")
     public String getEmployeeProjects(@PathVariable Integer id ,Model model){
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -257,10 +255,11 @@ public class UIController extends WebSecurityConfigurerAdapter {
             model.addAttribute("error",responseEntity);
         }
 
-        return "viewProjects";
+        return "employeeInfo";
     }
 
-    @RequestMapping(value = "/employee/{eid}/project/{pid}/tasks")
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_operator')")
+    @RequestMapping(value = "/employees/{eid}/projects/{pid}/tasks")
     public String getEmployeeProjects(@PathVariable Integer eid ,@PathVariable Integer pid,Model model){
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
@@ -274,6 +273,6 @@ public class UIController extends WebSecurityConfigurerAdapter {
             model.addAttribute("error",responseEntity);
         }
 
-        return "viewTasks";
+        return "taskInfo";
     }
 }

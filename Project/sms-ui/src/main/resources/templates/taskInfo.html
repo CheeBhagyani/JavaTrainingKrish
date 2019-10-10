@@ -38,39 +38,33 @@
                 <a class="nav-link" href="/task">Task</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/operations">Operations</a>
+                <a class="nav-link" href="/operations" sec:authorize="hasRole('ROLE_manager')">Operations</a>
             </li>
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
             <span class="navbar-text">
-                <b>/Employee/Tasks</b>
+                <b>/Employee/Employee Info</b>
             </span>
         </ul>
     </div>
 </nav>
-<div class="container mt-4 col-lg-10">
-        <table class="table table-striped mt-2 table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Task Id</th>
-                        <th scope="col">Task Name</th>
-                        <th scope="col">Priority</th>
-                        <th scope="col">Start Date</th>
-                        <th scope="col">End date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="employee:${employees}">
-                        <th scope="row"><span th:text="${employee.eid}"></span></th>
-                        <td><span th:text="${employee.ename}"></span></td>
-                        <td><span th:text="${employee.address.addressName}"></span></td>
-                        <td><span>011288888</span></td>
-                        <td><span>011288888</span></td>
-                        <td><span>011288888</span></td>
-                    </tr>
-                </tbody>
-            </table> 
-</div>  
+<div class="container mt-4 col-lg-8">
+    <table class="table table-striped mt-2">
+        <thead>
+        <tr>
+            <th scope="col">Task Id</th>
+            <th scope="col">ask Name</th>
+            <th scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task:${tasks}">
+            <th scope="row"><span th:text="${task.id}"></span></th>
+            <td><span th:text="${task.taskName}"></span></td>
+            <td><span th:text="${task.taskDes}"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
