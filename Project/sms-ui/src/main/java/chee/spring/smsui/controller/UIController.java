@@ -243,4 +243,37 @@ public class UIController extends WebSecurityConfigurerAdapter {
 
         return "employeeInfo";
     }
+
+    @RequestMapping(value = "/employees/{id}/projects")
+    public String getEmployeeProjects(@PathVariable Integer id ,Model model){
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
+        HttpEntity<Employee> employeeHttpEntity = new HttpEntity<Employee>(httpHeaders);
+        try {
+            ResponseEntity<Project[]> responseEntity = restTemplate.exchange("http://localhost:8080/ems/employee/{id}/projects", HttpMethod.GET,employeeHttpEntity,Project[].class,id);
+            model.addAttribute("projects",responseEntity.getBody());
+        }catch (HttpStatusCodeException se){
+            ResponseEntity responseEntity = ResponseEntity.status(se.getRawStatusCode()).headers(se.getResponseHeaders()).body(se.getResponseBodyAsString());
+            model.addAttribute("error",responseEntity);
+        }
+
+        return "viewProjects";
+    }
+
+    @RequestMapping(value = "/employee/{eid}/project/{pid}/tasks")
+    public String getEmployeeProjects(@PathVariable Integer eid ,@PathVariable Integer pid,Model model){
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
+        HttpEntity<Employee> employeeHttpEntity = new HttpEntity<Employee>(httpHeaders);
+
+        try {
+            ResponseEntity<Task[]> responseEntity = restTemplate.exchange("http://localhost:8080/ems/employee/{eid}/project/{pid}/tasks", HttpMethod.GET,employeeHttpEntity,Task[].class,eid,pid);
+            model.addAttribute("tasks",responseEntity.getBody());
+        }catch (HttpStatusCodeException se){
+            ResponseEntity responseEntity = ResponseEntity.status(se.getRawStatusCode()).headers(se.getResponseHeaders()).body(se.getResponseBodyAsString());
+            model.addAttribute("error",responseEntity);
+        }
+
+        return "viewTasks";
+    }
 }

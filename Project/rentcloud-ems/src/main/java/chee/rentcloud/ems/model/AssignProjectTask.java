@@ -9,17 +9,17 @@ import javax.persistence.Id;
 public class AssignProjectTask {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer aid;
+    private Integer id;
     private Integer eid;
     private Integer pid;
     private Integer tid;
 
-    public Integer getAid() {
-        return aid;
+    public Integer getId() {
+        return id;
     }
 
-    public void setAid(Integer aid) {
-        this.aid = aid;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getEid() {
@@ -44,5 +44,15 @@ public class AssignProjectTask {
 
     public void setTid(Integer tid) {
         this.tid = tid;
+    }
+
+    @Override
+    public String toString() {
+        return "AssignProjectTask{" +
+                "id=" + id +
+                ", eid=" + eid +
+                ", pid=" + pid +
+                ", tid=" + tid +
+                '}';
     }
 }

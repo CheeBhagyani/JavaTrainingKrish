@@ -5,12 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TaskServiceImpl {
     @Autowired
-    TaskRepository taskRepository;
+    private TaskRepository taskRepository;
 
     public Task save(Task task) {
         return taskRepository.save(task);
@@ -20,7 +19,7 @@ public class TaskServiceImpl {
         return taskRepository.findAll();
     }
 
-    public Optional<Task> findById(Integer id) {
-        return taskRepository.findById(id);
+    public List<Task> getTasksList(List<Integer> id){
+        return taskRepository.findByIdIn(id);
     }
 }

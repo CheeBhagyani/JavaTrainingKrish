@@ -1,6 +1,5 @@
 package chee.project.springdatajpaems.service;
 
-import chee.project.springdatajpaems.controller.AccessTokenConfigurer;
 import chee.project.springdatajpaems.repository.AssignProjectTaskRepository;
 import chee.project.springdatajpaems.repository.EmployeeRepository;
 import chee.rentcloud.ems.model.AssignProjectTask;
@@ -48,17 +47,29 @@ public class EmployeeServiceImpl {
         return employeeRepository.findById(id);
     }
 
+    public List<AssignProjectTask> saveProjectTask(List<AssignProjectTask> assignProjectTasks){
+        return assignProjectTaskRepository.saveAll(assignProjectTasks);
+    }
+
     public List<Project> getProjects(Integer eid){
         List<AssignProjectTask> assignTasks = assignProjectTaskRepository.findByEid(eid);
-
+        System.out.println("1" + assignTasks);
         String projectIds = assignTasks.stream().map(s->String.valueOf(s.getPid())).collect(Collectors.joining(","));
+        System.out.println("2" + projectIds);
+        if(projectIds.equals(null)||projectIds.equals("")){
+            System.out.println("null");
+            return null;
+        }
+        else {
+            HttpHeaders httpHeaders = new HttpHeaders();
+            httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
+            HttpEntity<Project> projectHttpEntity = new HttpEntity<Project>(httpHeaders);
+            System.out.println("http://localhost:8081/ems/project/" + projectIds);
+            ResponseEntity<List> responseEntity = restTemplate.exchange("http://localhost:8081/ems/project/{id}", HttpMethod.GET, projectHttpEntity, List.class, projectIds);
 
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
-        HttpEntity<Project> projectHttpEntity = new HttpEntity<Project>(httpHeaders);
-        ResponseEntity<List> responseEntity = restTemplate.exchange("http://localhost:8080/ems/project/{id}", HttpMethod.GET, projectHttpEntity, List.class, projectIds);
+            return responseEntity.getBody();
 
-        return responseEntity.getBody();
+        }
     }
 
     public List<Task> getTasks(Integer pid){

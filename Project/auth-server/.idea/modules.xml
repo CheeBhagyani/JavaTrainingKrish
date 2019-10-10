@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/../sms-ui/sms-ui.iml" filepath="$PROJECT_DIR$/../sms-ui/sms-ui.iml" />
       <module fileurl="file://$PROJECT_DIR$/../springdata-jpa-employee/springdata-jpa-employee.iml" filepath="$PROJECT_DIR$/../springdata-jpa-employee/springdata-jpa-employee.iml" />
       <module fileurl="file://$PROJECT_DIR$/../springdata-jpa-project/springdata-jpa-project.iml" filepath="$PROJECT_DIR$/../springdata-jpa-project/springdata-jpa-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../springdata-jpa-task/springdata-jpa-task.iml" filepath="$PROJECT_DIR$/../springdata-jpa-task/springdata-jpa-task.iml" />
     </modules>
   </component>
 </project>

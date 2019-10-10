@@ -9,16 +9,16 @@ import javax.persistence.Id;
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer taskId;
+    private Integer id;
     private String taskName;
     private String taskDes;
 
-    public Integer getTaskId() {
-        return taskId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setTaskId(Integer taskId) {
-        this.taskId = taskId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTaskName() {
@@ -35,5 +35,14 @@ public class Task {
 
     public void setTaskDes(String taskDes) {
         this.taskDes = taskDes;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", taskName='" + taskName + '\'' +
+                ", taskDes='" + taskDes + '\'' +
+                '}';
     }
 }

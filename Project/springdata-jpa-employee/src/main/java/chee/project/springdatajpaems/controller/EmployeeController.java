@@ -1,6 +1,5 @@
 package chee.project.springdatajpaems.controller;
 
-import chee.project.springdatajpaems.service.AssignProjectTaskImpl;
 import chee.project.springdatajpaems.service.EmployeeServiceImpl;
 import chee.rentcloud.ems.model.AssignProjectTask;
 import chee.rentcloud.ems.model.Employee;
@@ -17,9 +16,6 @@ import java.util.Optional;
 public class EmployeeController {
     @Autowired
     EmployeeServiceImpl employeeService;
-
-    @Autowired
-    AssignProjectTaskImpl assignProjectTaskService;
 
     @RequestMapping(value = "/employee", method = RequestMethod.POST)
     public Employee save(@RequestBody Employee employee) {
@@ -50,7 +46,7 @@ public class EmployeeController {
     @RequestMapping(value = "/assign",method = RequestMethod.POST)
 //    @PreAuthorize("hasRole('ROLE_manager')")
         public List<AssignProjectTask> saveAssignProjectTask(@RequestBody List<AssignProjectTask> assignProjectTasks){
-        return assignProjectTaskService.saveProjectTask(assignProjectTasks);
+        return employeeService.saveProjectTask(assignProjectTasks);
     }
 
     @RequestMapping(value = "/employee/{id}",method = RequestMethod.GET)
@@ -67,7 +63,7 @@ public class EmployeeController {
 
     @RequestMapping(value = "/employee/{eid}/project/{pid}/tasks",method = RequestMethod.GET)
 //    @PreAuthorize("hasAuthority('read_profile')")
-    public List<Task> getProjectIds(@PathVariable Integer eid, @PathVariable Integer pid){
+    public List<Task> getTaskIds(@PathVariable Integer eid, @PathVariable Integer pid){
         return employeeService.getTasks(pid);
     }
 

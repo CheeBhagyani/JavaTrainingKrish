@@ -55,7 +55,7 @@
         </thead>
         <tbody>
         <tr th:each="task:${tasks}">
-            <th scope="row"><span th:text="${task.taskId}"></span></th>
+            <th scope="row"><span th:text="${task.id}"></span></th>
             <th scope="row"><span th:text="${task.taskName}"></span></th>
             <td><span th:text="${task.taskDes}"></span></td>
         </tr>

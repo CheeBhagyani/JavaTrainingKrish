@@ -1,25 +1,21 @@
 package chee.rentcloud.ems.model;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer projectId;
+    private Integer id;
     private String projectName;
     private String ProjectDes;
     private String projectClient;
 
-    public Integer getProjectId() {
-        return projectId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setProjectId(Integer projectId) {
-        this.projectId = projectId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getProjectName() {
@@ -46,4 +42,13 @@ public class Project {
         this.projectClient = projectClient;
     }
 
+    @Override
+    public String toString() {
+        return "Project{" +
+                "id=" + id +
+                ", projectName='" + projectName + '\'' +
+                ", ProjectDes='" + ProjectDes + '\'' +
+                ", projectClient='" + projectClient + '\'' +
+                '}';
+    }
 }

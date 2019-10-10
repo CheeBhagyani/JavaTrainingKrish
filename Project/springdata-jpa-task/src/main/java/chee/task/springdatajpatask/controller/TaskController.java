@@ -1,4 +1,4 @@
-package chee.task.springdatajpatask;
+package chee.task.springdatajpatask.controller;
 
 import chee.rentcloud.ems.model.Task;
 import chee.task.springdatajpatask.service.TaskServiceImpl;
@@ -12,7 +12,7 @@ import java.util.Optional;
 @RequestMapping(value = "/ems")
 public class TaskController {
     @Autowired
-    TaskServiceImpl taskService;
+    private TaskServiceImpl taskService;
 
     @RequestMapping(value = "/tasks", method = RequestMethod.GET)
     public List<Task> getAll(Optional<Integer> id) {
@@ -25,7 +25,8 @@ public class TaskController {
     }
 
     @RequestMapping(value = "/task/{id}", method = RequestMethod.GET)
-    public Optional<Task> getById(@PathVariable Integer id) {
-        return taskService.findById(id);
+    public List<Task> getTask(@PathVariable List<Integer> id){
+
+        return taskService.getTasksList(id);
     }
 }

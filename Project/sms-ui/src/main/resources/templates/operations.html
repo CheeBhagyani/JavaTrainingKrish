@@ -54,14 +54,14 @@
             <select class="col-8 browser-default custom-select pb-2" id="pid" name="pid">
                 <option selected>Select Project</option>
                 <option th:each="project : ${projects}"
-                        th:value="${project.projectId}"
+                        th:value="${project.id}"
                         th:utext="${project.projectName}"/>
             </select>
             <label class="col-12 col-form-label pb-2">Tasks :</label>
             <div class="col-6 input-group mb-3 pb-2" th:each="task : ${tasks}">
                 <div class="input-group-prepend">
                     <div class="input-group-text" >
-                        <input type="checkbox" aria-label="Checkbox for following text input" th:value="${task.taskId}" name="tid">
+                        <input type="checkbox" aria-label="Checkbox for following text input" th:value="${task.id}" name="tid">
                     </div>
                 </div>
                 <label type="text" class="form-control" aria-label="Text input with checkbox" th:text="${task.taskName}" readonly></label>

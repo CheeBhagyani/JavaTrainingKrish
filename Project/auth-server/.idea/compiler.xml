@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="springdata-jpa-project" />
-        <module name="sms-ui" />
-        <module name="auth-server" />
         <module name="rentcloud-ems" />
+        <module name="sms-ui" />
+        <module name="springdata-jpa-task" />
+        <module name="auth-server" />
         <module name="springdata-jpa-employee" />
+        <module name="springdata-jpa-project" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -19,6 +20,7 @@
       <module name="sms-ui" target="1.8" />
       <module name="springdata-jpa-employee" target="1.8" />
       <module name="springdata-jpa-project" target="1.8" />
+      <module name="springdata-jpa-task" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -27,6 +29,7 @@
       <module name="sms-ui" options="-parameters" />
       <module name="springdata-jpa-employee" options="-parameters" />
       <module name="springdata-jpa-project" options="-parameters" />
+      <module name="springdata-jpa-task" options="-parameters" />
     </option>
   </component>
 </project>

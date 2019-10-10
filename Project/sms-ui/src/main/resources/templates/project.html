@@ -56,7 +56,7 @@
         </thead>
         <tbody>
         <tr th:each="project:${projects}">
-            <th scope="row"><span th:text="${project.projectId}"></span></th>
+            <th scope="row"><span th:text="${project.id}"></span></th>
             <th scope="row"><span th:text="${project.projectName}"></span></th>
             <td><span th:text="${project.projectDes}"></span></td>
             <td><span th:text="${project.projectClient}"></span></td>
