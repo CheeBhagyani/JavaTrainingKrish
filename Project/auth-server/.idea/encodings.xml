@@ -2,7 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/../sms-ui" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ems-ui" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../springdata-jpa-employee" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../springdata-jpa-project" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../springdata-jpa-task" charset="UTF-8" />
