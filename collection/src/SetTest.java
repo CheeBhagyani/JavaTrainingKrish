@@ -14,10 +14,6 @@ public class SetTest {
         students.add(new Student(1, "e" , "i"));
 
         System.out.println("Before \n");
-        for(Student student: students ) {
-            Set<Student> studentList = new TreeSet<>();
-            studentList.add(student);
-        }
         System.out.println(students);
     }
 }
