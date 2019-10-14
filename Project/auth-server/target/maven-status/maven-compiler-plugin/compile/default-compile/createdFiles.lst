@@ -1,9 +1,9 @@
-chee/auth/authserver/service/UserDetailServiceImpl.class
 chee/auth/authserver/model/AuthUserDetail.class
+chee/auth/authserver/service/UserDetailServiceImpl.class
 chee/auth/authserver/repository/UserDetailRepository.class
 chee/auth/authserver/model/Role.class
 chee/auth/authserver/config/AuthorizationServerConfiguration.class
-chee/auth/authserver/model/User.class
 chee/auth/authserver/model/Permission.class
+chee/auth/authserver/model/User.class
 chee/auth/authserver/config/WebSecurityConfiguration.class
 chee/auth/authserver/AuthServerApplication.class

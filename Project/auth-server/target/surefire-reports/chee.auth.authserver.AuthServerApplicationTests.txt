@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: chee.auth.authserver.AuthServerApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.712 s - in chee.auth.authserver.AuthServerApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.671 s - in chee.auth.authserver.AuthServerApplicationTests

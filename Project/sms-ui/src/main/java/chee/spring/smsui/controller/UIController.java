@@ -76,7 +76,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         HttpEntity<Employee> studentHttpEntity = new HttpEntity<>(httpHeaders);
 
         try {
-            ResponseEntity<Employee[]> responseEntity = restTemplate.exchange("http://localhost:8080/ems/employees", HttpMethod.GET, studentHttpEntity, Employee[].class);
+            ResponseEntity<Employee[]> responseEntity = restTemplate.exchange("http://ems-c-1:8080/ems/employees", HttpMethod.GET, studentHttpEntity, Employee[].class);
             model.addAttribute("employees", responseEntity.getBody());
         } catch (HttpStatusCodeException e) {
             ResponseEntity responseEntity = ResponseEntity.status(e.getRawStatusCode()).headers(e.getResponseHeaders()).body(e.getResponseBodyAsString());
@@ -95,7 +95,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
 
 
         try {
-            ResponseEntity<Employee> responseEntity = restTemplate.exchange("http://localhost:8080/ems/employee", HttpMethod.POST,employeeHttpEntity,Employee.class);
+            ResponseEntity<Employee> responseEntity = restTemplate.exchange("http://ems-c-1:8080/ems/employee", HttpMethod.POST,employeeHttpEntity,Employee.class);
         } catch (HttpStatusCodeException se){
             ResponseEntity responseEntity = ResponseEntity.status(se.getRawStatusCode()).headers(se.getResponseHeaders()).body(se.getResponseBodyAsString());
             model.addAttribute("error",responseEntity);
@@ -111,7 +111,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         HttpEntity<Project> projectHttpEntity = new HttpEntity<Project>(project, httpHeaders);
 
         try {
-            ResponseEntity<Project> responseEntity = restTemplate.exchange("http://localhost:8081/ems/project", HttpMethod.POST,projectHttpEntity,Project.class);
+            ResponseEntity<Project> responseEntity = restTemplate.exchange("http://proj-c-1:8081/ems/project", HttpMethod.POST,projectHttpEntity,Project.class);
         } catch (HttpStatusCodeException se){
             ResponseEntity responseEntity = ResponseEntity.status(se.getRawStatusCode()).headers(se.getResponseHeaders()).body(se.getResponseBodyAsString());
             model.addAttribute("error",responseEntity);
@@ -128,7 +128,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         HttpEntity<Project> projectHttpEntity = new HttpEntity<>(httpHeaders);
 
         try {
-            ResponseEntity<Project[]> responseEntity = restTemplate.exchange("http://localhost:8081/ems/projects", HttpMethod.GET, projectHttpEntity, Project[].class);
+            ResponseEntity<Project[]> responseEntity = restTemplate.exchange("http://proj-c-1:8081/ems/projects", HttpMethod.GET, projectHttpEntity, Project[].class);
             model.addAttribute("projects", responseEntity.getBody());
         } catch (HttpStatusCodeException e) {
             ResponseEntity responseEntity = ResponseEntity.status(e.getRawStatusCode()).headers(e.getResponseHeaders()).body(e.getResponseBodyAsString());
@@ -146,7 +146,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         HttpEntity<Task> taskHttpEntity = new HttpEntity<>(httpHeaders);
 
         try {
-            ResponseEntity<Task[]> responseEntity = restTemplate.exchange("http://localhost:8082/ems/tasks", HttpMethod.GET, taskHttpEntity, Task[].class);
+            ResponseEntity<Task[]> responseEntity = restTemplate.exchange("http://task-c-1:8082/ems/tasks", HttpMethod.GET, taskHttpEntity, Task[].class);
             model.addAttribute("tasks", responseEntity.getBody());
         } catch (HttpStatusCodeException e) {
             ResponseEntity responseEntity = ResponseEntity.status(e.getRawStatusCode()).headers(e.getResponseHeaders()).body(e.getResponseBodyAsString());
@@ -163,7 +163,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
         HttpEntity<Task> taskHttpEntity = new HttpEntity<Task>(task, httpHeaders);
         try {
-            ResponseEntity<Task> responseEntity = restTemplate.exchange("http://localhost:8082/ems/task", HttpMethod.POST,taskHttpEntity,Task.class);
+            ResponseEntity<Task> responseEntity = restTemplate.exchange("http://task-c-1:8082/ems/task", HttpMethod.POST,taskHttpEntity,Task.class);
         } catch (HttpStatusCodeException se){
             ResponseEntity responseEntity = ResponseEntity.status(se.getRawStatusCode()).headers(se.getResponseHeaders()).body(se.getResponseBodyAsString());
             model.addAttribute("error",responseEntity);
@@ -180,11 +180,11 @@ public class UIController extends WebSecurityConfigurerAdapter {
         HttpEntity<Task> taskHttpEntity = new HttpEntity<>(httpHeaders);
         HttpEntity<Project> projectHttpEntity = new HttpEntity<>(httpHeaders);
         try {
-            ResponseEntity<Employee[]> responseEntityEmp = restTemplate.exchange("http://localhost:8080/ems/employees", HttpMethod.GET, employeeHttpEntity, Employee[].class);
+            ResponseEntity<Employee[]> responseEntityEmp = restTemplate.exchange("http://ems-c-1:8080/ems/employees", HttpMethod.GET, employeeHttpEntity, Employee[].class);
             model.addAttribute("employees", responseEntityEmp.getBody());
-            ResponseEntity<Task[]> responseEntityTask = restTemplate.exchange("http://localhost:8082/ems/tasks", HttpMethod.GET, taskHttpEntity, Task[].class);
+            ResponseEntity<Task[]> responseEntityTask = restTemplate.exchange("http://task-c-1:8082/ems/tasks", HttpMethod.GET, taskHttpEntity, Task[].class);
             model.addAttribute("tasks", responseEntityTask.getBody());
-            ResponseEntity<Project[]> responseEntityProject = restTemplate.exchange("http://localhost:8081/ems/projects", HttpMethod.GET, projectHttpEntity, Project[].class);
+            ResponseEntity<Project[]> responseEntityProject = restTemplate.exchange("http://proj-c-1:8081/ems/projects", HttpMethod.GET, projectHttpEntity, Project[].class);
             model.addAttribute("projects", responseEntityProject.getBody());
         }catch (HttpStatusCodeException se){
             ResponseEntity responseEntity = ResponseEntity.status(se.getRawStatusCode()).headers(se.getResponseHeaders()).body(se.getResponseBodyAsString());
@@ -211,7 +211,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
 
         HttpEntity<List> assignTaskHttpEntity = new HttpEntity<List>(assignTask,httpHeaders);
         try {
-            ResponseEntity<List> responseEntity = restTemplate.exchange("http://localhost:8080/ems/assign", HttpMethod.POST,assignTaskHttpEntity,List.class);
+            ResponseEntity<List> responseEntity = restTemplate.exchange("http://ems-c-1:8080/ems/assign", HttpMethod.POST,assignTaskHttpEntity,List.class);
         }catch (HttpStatusCodeException se){
             ResponseEntity responseEntity = ResponseEntity.status(se.getRawStatusCode()).headers(se.getResponseHeaders()).body(se.getResponseBodyAsString());
             model.addAttribute("error",responseEntity);
@@ -228,9 +228,9 @@ public class UIController extends WebSecurityConfigurerAdapter {
         HttpEntity<Employee> employeeHttpEntity = new HttpEntity<Employee>(httpHeaders);
 
         try {
-            ResponseEntity<Employee> responseEntity1 = restTemplate.exchange("http://localhost:8080/ems/employee/{id}", HttpMethod.GET,employeeHttpEntity,Employee.class,id);
+            ResponseEntity<Employee> responseEntity1 = restTemplate.exchange("http://ems-c-1:8080/ems/employee/{id}", HttpMethod.GET,employeeHttpEntity,Employee.class,id);
             model.addAttribute("employee",responseEntity1.getBody());
-            ResponseEntity<Project[]> responseEntity2 = restTemplate.exchange("http://localhost:8080/ems/employee/{id}/projects", HttpMethod.GET,employeeHttpEntity,Project[].class,id);
+            ResponseEntity<Project[]> responseEntity2 = restTemplate.exchange("http://ems-c-1:8080/ems/employee/{id}/projects", HttpMethod.GET,employeeHttpEntity,Project[].class,id);
             model.addAttribute("projects",responseEntity2.getBody());
         }catch (HttpStatusCodeException se){
             ResponseEntity responseEntity = ResponseEntity.status(se.getRawStatusCode()).headers(se.getResponseHeaders()).body(se.getResponseBodyAsString());
@@ -247,7 +247,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
         HttpEntity<Employee> employeeHttpEntity = new HttpEntity<Employee>(httpHeaders);
         try {
-            ResponseEntity<Project[]> responseEntity = restTemplate.exchange("http://localhost:8080/ems/employee/{id}/projects", HttpMethod.GET,employeeHttpEntity,Project[].class,id);
+            ResponseEntity<Project[]> responseEntity = restTemplate.exchange("http://ems-c-1:8080/ems/employee/{id}/projects", HttpMethod.GET,employeeHttpEntity,Project[].class,id);
             model.addAttribute("projects",responseEntity.getBody());
         }catch (HttpStatusCodeException se){
             ResponseEntity responseEntity = ResponseEntity.status(se.getRawStatusCode()).headers(se.getResponseHeaders()).body(se.getResponseBodyAsString());
@@ -265,7 +265,7 @@ public class UIController extends WebSecurityConfigurerAdapter {
         HttpEntity<Employee> employeeHttpEntity = new HttpEntity<Employee>(httpHeaders);
 
         try {
-            ResponseEntity<Task[]> responseEntity = restTemplate.exchange("http://localhost:8080/ems/employee/{eid}/project/{pid}/tasks", HttpMethod.GET,employeeHttpEntity,Task[].class,eid,pid);
+            ResponseEntity<Task[]> responseEntity = restTemplate.exchange("http://ems-c-1:8080/ems/employee/{eid}/project/{pid}/tasks", HttpMethod.GET,employeeHttpEntity,Task[].class,eid,pid);
             model.addAttribute("tasks",responseEntity.getBody());
         }catch (HttpStatusCodeException se){
             ResponseEntity responseEntity = ResponseEntity.status(se.getRawStatusCode()).headers(se.getResponseHeaders()).body(se.getResponseBodyAsString());

@@ -4,9 +4,9 @@ security:
       client-id: mobile
       client-secret: pin
       user-authorization-uri: http://localhost:9091/oauth/authorize
-      access-token-uri: http://localhost:9091/oauth/token
+      access-token-uri: http://authcon:9091/oauth/token
     resource:
-      token-info-uri: http://localhost:9091/oauth/check_token
+      token-info-uri: http://authcon:9091/oauth/check_token
 server:
   port: 8083
   servlet:
