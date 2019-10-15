@@ -78,7 +78,7 @@ public class EmployeeServiceImpl {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Authorization", AccessTokenConfigurer.getToken());
         HttpEntity<Task> taskHttpEntity = new HttpEntity<Task>(httpHeaders);
-        ResponseEntity<List> responseEntity = restTemplate.exchange("http://task-c-2:8082/ems/task/{id}", HttpMethod.GET, taskHttpEntity, List.class, taskIds);
+        ResponseEntity<List> responseEntity = restTemplate.exchange("http://task-c-1:8082/ems/task/{id}", HttpMethod.GET, taskHttpEntity, List.class, taskIds);
 
         return responseEntity.getBody();
 

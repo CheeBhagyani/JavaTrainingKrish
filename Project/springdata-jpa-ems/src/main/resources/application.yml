@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/emsDB?createDatabaseIfNotExist=true
+    url: jdbc:mysql://mysql-server:3306/emsDB?createDatabaseIfNotExist=true
     username: root
-    password:
+    password: 1qaz2wsx@
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:

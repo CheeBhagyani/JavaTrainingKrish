@@ -15,6 +15,7 @@ INSERT INTO oauth_client_details (client_id, client_secret, web_server_redirect_
      (4,1), /* delete admin */
      (2,2),  /* read operator */
      (3,2);  /* update operator */
+
 insert into user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('1', 'bhagyani','{bcrypt}$2a$10$HiOhOVE06R9mkL0xpMBSU.8ptbMEu3sIwhSlKQKJDRcjm/PFnaYaO', 'b@bhagyani.com', '1', '1', '1', '1');
 insert into  user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('2', 'chee', '{bcrypt}$2a$10$zXXvYlxSO.njoeGD6H2/1emfjvwnEv/fn/cTWlqlKDN/l2cGKqEYG','b@bhagyani.com', '1', '1', '1', '1');
 

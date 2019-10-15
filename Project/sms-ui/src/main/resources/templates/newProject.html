@@ -58,11 +58,11 @@
     <form name="project-form" th:action="@{/project}" method="post">
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label"> Name:</label>
-                    <input class="form-control" type="text" name="projectName" id="projectName" placeholder="Enter Project name">
+                    <input class="form-control" type="text" name="projectName" id="projectName" placeholder="Enter Project name" required>
                     <label class="col-sm-2 col-form-label"> Description:</label>
-                    <input class="form-control" type="text" name="ProjectDes" id="ProjectDes" placeholder="Enter Project Description">
+                    <input class="form-control" type="text" name="ProjectDes" id="ProjectDes" placeholder="Enter Project Description" required>
                     <label class="col-sm-2 col-form-label"> Client:</label>
-                    <input class="form-control" type="text" name="projectClient" id="projectClient" placeholder="Enter Client">
+                    <input class="form-control" type="text" name="projectClient" id="projectClient" placeholder="Enter Client" required>
                 </div>
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Create</button>
                 <button class="btn btn-outline-secondary my-2 my-sm-0">Cancel</button>

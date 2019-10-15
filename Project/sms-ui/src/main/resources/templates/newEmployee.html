@@ -58,11 +58,11 @@
     <form name="emp-form" th:action="@{/employee}" method="post">
         <div class="form-group row">
             <label class="col-sm-2 col-form-label"> Name:</label>
-            <input class="form-control" type="text" name="ename" id="ename" placeholder="Enter employee name">
+            <input class="form-control" type="text" name="ename" id="ename" placeholder="Enter employee name" required>
             <label class="col-sm-2 col-form-label"> Email:</label>
-            <input class="form-control" type="text" name="email" id="email" placeholder="Enter employee email">
+            <input class="form-control" type="text" name="email" id="email" placeholder="Enter employee email" required>
             <label class="col-sm-2 col-form-label"> Contact:</label>
-            <input class="form-control" type="text" name="contact" id="contact" placeholder="Enter employee contact">
+            <input class="form-control" type="text" name="contact" id="contact" placeholder="Enter employee contact" required>
         </div>
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Create</button>
         <button class="btn btn-outline-secondary my-2 my-sm-0">Cancel</button>

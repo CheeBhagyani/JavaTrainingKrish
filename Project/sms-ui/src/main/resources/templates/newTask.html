@@ -58,9 +58,9 @@
     <form name="task-form" th:action="@{/task}" method="post">
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label"> Name:</label>
-                <input class="form-control" type="text" name="taskName" id="taskName" placeholder="Enter task name">
+                <input class="form-control" type="text" name="taskName" id="taskName" placeholder="Enter task name" required>
                 <label class="col-sm-2 col-form-label"> Description:</label>
-                <input class="form-control" type="text" name="taskDes" id="taskDes" placeholder="Enter task description">
+                <input class="form-control" type="text" name="taskDes" id="taskDes" placeholder="Enter task description" required>
             </div>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Create</button>
             <button class="btn btn-outline-secondary my-2 my-sm-0">Cancel</button>
